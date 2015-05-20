@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="SiyuChen" />
+<title>Floating-Cloud</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #4169E1;
+}
+div#cloud {
+	position: absolute; 
+	top: 100px;
+	left: 100px;
+	width: 200px;
+	height:100px;
+}
+div#cloud2 {
+	position: absolute; 
+	top: 100px;
+	left: 400px;
+	width: 200px;
+	height:100px;
+}
+div .bottom-part {
+	position: absolute;
+	top: 50px;
+	left: 0;
+}
+div .lc {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #FFF;
+}
+div .mr {
+	position: absolute;
+	top: 0;
+	left: 25px;
+	width: 150px;
+	height: 50px;
+	background: #FFF;
+}
+div .rc {
+	position: absolute;
+	top: 0;
+	left: 150px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #FFF;
+}
+div .ulc {
+	position: absolute;
+	top: 0px;
+	left: 25px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background: #FFF;
+}
+div .urc {
+	position: absolute;
+	top: 15px;
+	left: 100px;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	background: #FFF;
+}
+</style>
+<script type="text/javascript">
+window.onload = function() {
+	var oCloud = document.getElementById('cloud');
+	move(oCloud,1,1);
+	
+	function move(obj,speedX,speedY) {   //pass the object and initial speed
+		var left = obj.offsetLeft;
+		var top = obj.offsetTop;	
+		var maxL = document.documentElement.clientWidth-obj.offsetWidth-100;
+		var minL = 10;
+		var maxT = 150;
+		var minT = 1;
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function() {
+			var l = left+speedX;
+			var t = top+speedY;
+			if(l>=maxL||l<=100) {
+				speedX*=-1;
+			}
+			if(t>=maxT||t<=100) {
+				speedY*=-1;
+			}
+			left = l;
+			top = t;
+			obj.style.left = left+'px';
+			obj.style.top = top+'px';
+		},30);
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="cloud">
+	<div class="upper-part">
+		<div class="ulc"></div>
+		<div class="urc"></div>
+	</div>
+	<div class="bottom-part">
+		<div class="lc"></div>
+		<div class="mr"></div>
+		<div class="rc"></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
